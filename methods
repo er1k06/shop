@@ -1,0 +1,47 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace shop
+{
+    internal class Methods
+    {
+        Products product1 = new Products("Laptop", 949.99);
+        Products product2 = new Products("Smartphone", 499.99);
+        Products product3 = new Products("Tablet", 299.99);
+        public void ShowProducts()
+        {
+            Console.WriteLine("1. " + product1.Name + " - $" + product1.Price);
+            Console.WriteLine("2. " + product2.Name + " - $" + product2.Price);
+            Console.WriteLine("3. " + product3.Name + " - $" + product3.Price);
+        }
+    }
+    class Cart
+    {
+        private List<Products> items = new List<Products>();
+        public void AddToCart(Products product)
+        {
+            items.Add(product);
+            Console.WriteLine(product.Name + " has been added to your cart.");
+        }
+        public void ViewCart()
+        {
+            Console.WriteLine("Your cart contains:");
+            foreach (var item in items)
+            {
+                Console.WriteLine("- " + item.Name + " - $" + item.Price);
+            }
+        }
+        public void ViewCart2()
+        {
+            double total = 0;
+            foreach (var item in items)
+            {
+                total += item.Price;
+            }
+            Console.WriteLine("Total amount: $" + total);
+        }
+    }
+}
